@@ -1,8 +1,42 @@
+$(function () {
+
+    /*//////////////// GNB 시작//////////////// */
+    $("#mainMenu>li").mouseover(function () {
+        $(".subMenu").stop().fadeIn(1000);
+    });
+    $("#mainMenu>li").mouseout(function () {
+        $(".subMenu").stop().fadeOut(1000);
+    });
+    /*//////////////// GNB 끝//////////////// */
 
 
-$(function(){
+    /*//////////////// 슬라이드쇼 시작//////////////// */
 
-    $("button#tabBtn1").click(function(){
+    setInterval(fnSlide, 3000);
+    function fnSlide() {
+
+        $("#main #shuttleFrame").animate({
+                "margin-left": "-1200px"
+            },
+            1000,
+            "swing",
+            function () {
+                $("#main #shuttleFrame a:first-child").insertAfter("#main #shuttleFrame a:last-child");
+                $("#main #shuttleFrame").css({
+                    "margin-left": "0px"
+                });
+            }
+        );
+
+    }
+
+    /*//////////////// 슬라이드쇼 끝//////////////// */
+
+
+
+
+    /*//////////////// 멀티탭 시작//////////////// */
+    $("button#tabBtn1").click(function () {
 
         /* 버튼 모양 변경 시작 */
         $("button").css({
@@ -26,7 +60,7 @@ $(function(){
     });
 
 
-    $("button#tabBtn2").click(function(){
+    $("button#tabBtn2").click(function () {
 
         /* 버튼 모양 변경 시작 */
         $("button").css({
@@ -50,12 +84,21 @@ $(function(){
         });
     });
 
-});  /*  $(function() {} );*/
+    /*//////////////// 멀티탭 끝//////////////// */
 
-/*
-중괄호, 소괄호의
-순서와 짝맞춤에
-아주아주 주의한다.
 
-$("선택자").메서드();
-*/
+
+    /*/////////// 레이어 팝업 시작 /////////// */
+    $(".modalPoint").click(function() {
+        $("#layerBG").css({"display": "block"});
+    });
+    $("#closeBtn").click(function() {
+        $("#layerBG").css({"display": "none"});
+    });
+    /*//////////// 레이어 팝업 끝 //////////// */
+
+
+
+
+
+});
